@@ -91,7 +91,6 @@ exposes every file in the project folder at `/static/<filename>`.
 
 | Symptom                                                                   | Likely cause / fix                                                                                                                                                      |
 | ------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-|
 | “Failed to open camera”                                                   | `video_reference` incorrect. Use `ls /dev/video*` for USB webcams or test your RTSP URL with VLC.                                                                       |
 | Page unreachable from other laptops                                       | Open firewall or bind to `0.0.0.0` (already the default in `config.yaml`).                                                                                              |
 
