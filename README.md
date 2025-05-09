@@ -28,7 +28,7 @@ conference_demo/
 | ----------------------------- | ------------------------------- |
 | Python                        | 3.9 – 3.11                      |
 | pip / venv                    | latest recommended              |
-| Roboflow `inference` SDK      | ≥ 0.50                          |
+| Roboflow `inference` SDK      | ≥ 0.40                          |
 | (optional) GPU drivers / CUDA | only if your workflow uses them |
 
 > **Hardware:** Works on a laptop, Jetson, or any Linux/Windows/Mac box that can access a webcam or RTSP stream.
