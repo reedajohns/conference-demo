@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Roboflow Live Inference</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600&display=swap" rel="stylesheet" />
+<style>
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:'Inter',sans-serif;
+    background:#111;
+    color:#eee;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  header{
+    width:100%;
+    padding:1rem 0;
+    text-align:center;          /* center the logo */
+  }
+  header img{
+    height:64px;                /* 30 % bigger */
+    width:auto;
+  }
+  #stream{
+    max-width:85vw;             /* 15 % smaller */
+    max-height:80vh;
+    border-radius:12px;
+    box-shadow:0 4px 20px rgba(0,0,0,.6);
+    object-fit:contain;
+  }
+  #controls{
+    margin-top:.8rem;
+    margin-bottom:1.2rem;
+  }
+  select{
+    padding:.45rem .7rem;
+    border-radius:6px;
+    border:none;
+    font-size:1rem;
+    background:#222;
+    color:#eee;
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <!-- fetch via /static thanks to the FastAPI mount -->
+    <img src="/static/roboflow_logo.png" alt="Roboflow logo">
+  </header>
+
+  <img id="stream" src="" alt="Live Stream">
+
+  <div id="controls">
+    Refresh&nbsp;
+    <select id="throttle">
+      <option value="33">30 fps</option>
+      <option value="100" selected>10 fps</option>
+      <option value="250">4 fps</option>
+      <option value="500">2 fps</option>
+      <option value="1000">1 fps</option>
+    </select>
+  </div>
+
+<script>
+  const img    = document.getElementById('stream');
+  const select = document.getElementById('throttle');
+  let timer;
+
+  function update(){ img.src = `/latest.jpg?t=${Date.now()}`; }
+
+  function setRate(ms){
+    clearInterval(timer);
+    timer = setInterval(update, ms);
+  }
+
+  select.addEventListener('change', e => setRate(+e.target.value));
+  setRate(+select.value);
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+fastapi
+uvicorn[standard]
+opencv-python-headless     # no GUI libs needed
+pyyaml
+inference                  # roboflow-inference-sdk

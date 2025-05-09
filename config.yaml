@@ -1,0 +1,12 @@
+roboflow:
+  api_key: "<your-key>"       # 🔒 put yours here or load from ENV
+  workspace: "roboflowreed"
+  workflow_id: "coco"
+  video_reference: 0                     # 0 = laptop webcam / USB webcam; RTSP/url also ok
+  max_fps: 30
+
+server:
+  host: "0.0.0.0"                        # bind all ifaces so others on Wi-Fi see it
+  port: 8000
+  refresh_intervals_ms: [33, 100, 250, 500, 1000]
+  default_interval_ms: 100
